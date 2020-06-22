@@ -2,6 +2,8 @@
 
 Se me solicitó hacer esta prueba para postular al trabajo.
 
+Nota: Hay un bug que al visitar por primera vez la página da un problema de CORS, pero lo solucionaré. Basta con volver a cargar la página y se puede probar.
+
 #### Probar visitando enlace
 
 La aplicación está corriendo en AWS EC2, en una instancia donde tengo varios contenedores Docker.
