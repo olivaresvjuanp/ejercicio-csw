@@ -1,19 +1,19 @@
 export interface MapState {
-  csv: any; //
-  geoJSON: any; //
+  geoJSON: any;
+  parsedCSV: any;
 }
 
-export const SET_CSV = 'SET_CSV';
 export const SET_GEOJSON = 'SET_GEOJSON';
-
-interface SetCSVAction {
-  type: typeof SET_CSV;
-  payload: any;
-}
+export const SET_PARSED_CSV = 'SET_PARSED_CSV';
 
 interface SetGEOJSONAction {
   type: typeof SET_GEOJSON;
   payload: any;
 }
 
-export type MapActionTypes = SetCSVAction | SetGEOJSONAction;
+interface SetParsedCSVAction {
+  type: typeof SET_PARSED_CSV;
+  payload: any;
+}
+
+export type MapActionTypes = SetGEOJSONAction | SetParsedCSVAction;

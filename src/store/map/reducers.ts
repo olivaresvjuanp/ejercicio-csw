@@ -1,13 +1,13 @@
 import {
   MapState,
-  SET_CSV,
   SET_GEOJSON,
+  SET_PARSED_CSV,
   MapActionTypes
 } from './types';
 
 const initialState: MapState = {
-  csv: null,
-  geoJSON: null
+  geoJSON: null,
+  parsedCSV: null
 };
 
 export function mapReducer(
@@ -15,17 +15,17 @@ export function mapReducer(
   action: MapActionTypes
 ): MapState {
   switch (action.type) {
-    case SET_CSV: {
-      return {
-        ...state,
-        csv: action.payload
-      };
-    }
-
     case SET_GEOJSON: {
       return {
         ...state,
         geoJSON: action.payload
+      };
+    }
+
+    case SET_PARSED_CSV: {
+      return {
+        ...state,
+        parsedCSV: action.payload
       };
     }
 

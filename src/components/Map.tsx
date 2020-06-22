@@ -111,7 +111,7 @@ class Map extends React.Component<MapProps, MapLocalState> {
                   // Obtener el nombre del monumento.
                   let monumentName: string;
 
-                  for (let i of this.props.mapReducer.csv) {
+                  for (let i of this.props.mapReducer.parsedCSV) {
                     if (i[0] == feature.properties.id) {
                       monumentName = i[1];
                     }

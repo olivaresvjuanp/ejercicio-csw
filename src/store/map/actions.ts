@@ -1,18 +1,18 @@
 import {
-  SET_CSV,
-  SET_GEOJSON
+  SET_GEOJSON,
+  SET_PARSED_CSV
 } from "./types";
-
-export function setCSV(csv: any) {
-  return {
-    type: SET_CSV,
-    payload: csv
-  };
-}
 
 export function setGeoJSON(geoJSON: any) {
   return {
     type: SET_GEOJSON,
     payload: geoJSON
+  };
+}
+
+export function setParsedCSV(csv: any) {
+  return {
+    type: SET_PARSED_CSV,
+    payload: csv
   };
 }

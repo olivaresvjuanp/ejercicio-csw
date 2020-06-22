@@ -11,9 +11,28 @@ import parse from 'csv-parse';
 import { AppState } from './store';
 
 import {
-  setCSV,
-  setGeoJSON
+  setGeoJSON,
+  setParsedCSV
 } from './store/map/actions';
+
+export const thunkGetGeoJSON = (): ThunkAction<void, AppState, null, Action> => {
+  return (dispatch: ThunkDispatch<AppState, null, Action>, getState: () => AppState): void => {
+    axios.get('https://cswcl.github.io/fake-api/monumentos_historicos_extracto.geojson')
+      .then((response: AxiosResponse): void => {
+        console.debug('getGeoJSON response', response);
+
+        if (response.status === 200) {
+          dispatch(setGeoJSON(response.data));
+        } else {
+          // ...
+        }
+      })
+      .catch((error): void => {
+        console.error('Error:', error);
+        // ...
+      });
+  };
+};
 
 export const thunkGetCSV = (): ThunkAction<void, AppState, null, Action> => {
   return (dispatch: ThunkDispatch<AppState, null, Action>, getState: () => AppState): void => {
@@ -26,27 +45,8 @@ export const thunkGetCSV = (): ThunkAction<void, AppState, null, Action> => {
             if (error)
               console.error(error);
 
-            dispatch(setCSV(output));
+            dispatch(setParsedCSV(output));
           });
-        } else {
-          // ...
-        }
-      })
-      .catch((error): void => {
-        console.error('Error:', error);
-        // ...
-      });
-  };
-};
-
-export const thunkGetGeoJSON = (): ThunkAction<void, AppState, null, Action> => {
-  return (dispatch: ThunkDispatch<AppState, null, Action>, getState: () => AppState): void => {
-    axios.get('https://cswcl.github.io/fake-api/monumentos_historicos_extracto.geojson')
-      .then((response: AxiosResponse): void => {
-        console.debug('getGeoJSON response', response);
-
-        if (response.status === 200) {
-          dispatch(setGeoJSON(response.data));
         } else {
           // ...
         }
